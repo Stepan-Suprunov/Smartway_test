@@ -1,0 +1,18 @@
+.Repository {
+    display: flex;
+    flex-direction: column;
+}
+
+.StargazersCount {
+}
+
+.ForksCount {
+}
+
+.RepositoryLink {
+}
+
+.RepositoryLogo {
+    max-width: 200px;
+    border-radius: 50%;
+}

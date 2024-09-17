@@ -1,0 +1,8 @@
+.RepositoriesList {
+    display: flex;
+    flex-direction: column;
+}
+
+.RepositoriesTitle {
+    font-weight: bold;
+}
