@@ -1,0 +1,8 @@
+.FavouritesList {
+    display: flex;
+    flex-direction: column;
+}
+
+.FavouritesTitle {
+    font-weight: bold;
+}

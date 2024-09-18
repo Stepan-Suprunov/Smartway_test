@@ -1,15 +1,15 @@
 import styles from "./style.module.css";
 import React from "react";
 
-type TopLayerPropsType = {
+type BodyLayoutPropsType = {
     children: React.ReactNode;
 };
 
-export function TopLayerLayout(props: TopLayerPropsType) {
+export function BodyLayout(props: BodyLayoutPropsType) {
     const {children} = props;
 
     return (
-        <div className={styles.TopLayer}>
+        <div className={styles.Body}>
             {children}
         </div>
     );

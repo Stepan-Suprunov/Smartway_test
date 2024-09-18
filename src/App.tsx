@@ -4,20 +4,21 @@ import {TopLayerLayout} from "./components/layouts/top-layer-layout";
 import {Input} from "./components/input";
 import {Button} from "./components/button";
 import {RepositoriesList} from "./components/repositories-list";
+import {BodyLayout} from "./components/layouts/body-layout";
+import {FavouritesList} from "./components/favourites-list";
 
 function App() {
-
-    const [repositoryTitle, setRepositoriesTitle] = React.useState<string>("");
 
     return (
         <MainLayout>
             <TopLayerLayout>
-                <Input placeholder={'Введите название репозитория'}
-                       setTitle={setRepositoriesTitle}
-                />
-                <Button title={'Найти'} />
+                <Input placeholder={'Введите название репозитория'}/>
+                <Button title={'Копировать'}/>
             </TopLayerLayout>
-            <RepositoriesList title={repositoryTitle}/>
+            <BodyLayout>
+                <RepositoriesList/>
+                <FavouritesList/>
+            </BodyLayout>
         </MainLayout>
     );
 }

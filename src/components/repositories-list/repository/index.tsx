@@ -1,11 +1,22 @@
 import styles from "./style.module.css";
 import React from "react";
+import {favouritesStore} from "../../../stores/favourites-store";
+import {observer} from "mobx-react";
 
 type RepositoryPropsType = {
     repository: any
 }
 
-export function Repository (props: RepositoryPropsType) {
+export function RepositoryComponent (props: RepositoryPropsType) {
+
+    const onFavouriteButtonClickHandler = () => {
+        if (!favouritesStore.includesFavourite(props.repository)) {
+            favouritesStore.addFavourite(props.repository);
+        } else {
+            favouritesStore.removeFavourite(props.repository);
+        };
+    };
+
     return (
         <div className={styles.Repository}>
             <a className={styles.RepositoryLink}
@@ -16,6 +27,12 @@ export function Repository (props: RepositoryPropsType) {
             <span className={styles.ForksCount}>Число форков: {props.repository.forks}</span>
             <img className={styles.RepositoryLogo}
                  src={props.repository.owner.avatar_url}/>
+            <button className={styles.FavouritesButton}
+                    onClick={onFavouriteButtonClickHandler}>
+                {favouritesStore.includesFavourite(props.repository)? 'Удалить из избранного' : 'Добавить в избранное'}
+            </button>
         </div>
     );
 };
+
+export const Repository = observer(RepositoryComponent);
