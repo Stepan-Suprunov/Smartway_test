@@ -1,6 +1,6 @@
 import styles from './style.module.css'
 import {favouritesStore} from "../../stores/favourites-store";
-import {Repository} from "../repositories-list/repository";
+import {Repository} from "../repository";
 import {observer} from "mobx-react";
 
 function FavouritesListComponent() {
