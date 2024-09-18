@@ -1,25 +1,15 @@
 import React from 'react';
-import {MainLayout} from "./components/layouts/main-layout";
-import {TopLayerLayout} from "./components/layouts/top-layer-layout";
-import {Input} from "./components/input";
-import {Button} from "./components/button";
-import {RepositoriesList} from "./components/repositories-list";
-import {BodyLayout} from "./components/layouts/body-layout";
-import {FavouritesList} from "./components/favourites-list";
+import {Route, Routes} from "react-router-dom";
+import {MainPage} from "./pages/main-page";
+import {DetailsPage} from "./pages/details-page";
 
 function App() {
 
     return (
-        <MainLayout>
-            <TopLayerLayout>
-                <Input placeholder={'Введите название репозитория'}/>
-                <Button title={'Копировать'}/>
-            </TopLayerLayout>
-            <BodyLayout>
-                <RepositoriesList/>
-                <FavouritesList/>
-            </BodyLayout>
-        </MainLayout>
+        <Routes>
+            <Route path='/' element={<MainPage/>}/>
+            <Route path="/detailes/" element={<DetailsPage/>} />
+        </Routes>
     );
 }
 

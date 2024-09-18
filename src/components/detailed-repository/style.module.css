@@ -1,0 +1,8 @@
+.DetailedRepository {
+    display: flex;
+    flex-direction: column;
+}
+
+.RepositoryLogo {
+    width: 200px;
+}

@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import styles from './style.module.css'
-import {Repository} from "./repository";
+import {Repository} from "../repository";
 import axios from "axios";
 import {repositoriesStore} from "../../stores/repositories-store";
 import {observer} from "mobx-react";
