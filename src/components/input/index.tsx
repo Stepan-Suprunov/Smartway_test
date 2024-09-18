@@ -5,7 +5,6 @@ import {observer} from "mobx-react";
 
 type InputPropsType = {
     placeholder: string
-    // setTitle: (title: string) => void
 };
 
 function InputComponent (props: InputPropsType) {
@@ -17,7 +16,6 @@ function InputComponent (props: InputPropsType) {
     };
     const onKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
-            // props.setTitle(title)
             requestStore.setRequest(title);
             setTitle('')
         }
