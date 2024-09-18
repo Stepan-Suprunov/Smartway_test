@@ -7,17 +7,18 @@ import {RepositoriesList} from "./components/repositories-list";
 
 function App() {
 
-    const [repositoryTitle, setRepositoriesTitle] = React.useState<string>("");
+    // const [repositoryTitle, setRepositoriesTitle] = React.useState<string>("");
 
     return (
         <MainLayout>
             <TopLayerLayout>
                 <Input placeholder={'Введите название репозитория'}
-                       setTitle={setRepositoriesTitle}
+                       // setTitle={setRepositoriesTitle}
                 />
                 <Button title={'Найти'} />
             </TopLayerLayout>
-            <RepositoriesList title={repositoryTitle}/>
+            {/*<RepositoriesList title={repositoryTitle}/>*/}
+            <RepositoriesList />
         </MainLayout>
     );
 }
