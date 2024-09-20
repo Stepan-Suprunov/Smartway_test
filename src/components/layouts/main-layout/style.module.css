@@ -1,4 +1,7 @@
 .MainLayout {
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
+    max-width: 1400px;
+    font-family: 'Montserrat', sans-serif;
 }

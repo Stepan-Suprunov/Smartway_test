@@ -5,4 +5,8 @@
 
 .FavouritesTitle {
     font-weight: bold;
+    color: dimgray;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 30px;
 }

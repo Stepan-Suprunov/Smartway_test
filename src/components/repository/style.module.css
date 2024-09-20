@@ -1,22 +1,84 @@
 .Repository {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px;
+    margin: 15px;
+    width: 400px;
+    /*height: 200px;*/
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    transition: all .3s ease;
+    border-radius: 30px;
+}
+
+.Repository:hover {
+    background-color: rgba(250, 254, 255, 1);
+    box-shadow: 0 8px 16px 0 rgba(155, 237, 255, 0.8);
+    transition: all .3s ease;
+}
+
+.RepositoryLeftColumn {
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    word-wrap: break-word;
 }
 
-.StargazersCount {
-}
-
-.ForksCount {
-}
-
-.RepositoryLink {
+.RepositoryRightColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .RepositoryLogo {
-    max-width: 200px;
+    width: 180px;
     border-radius: 50%;
 }
 
-.FavouritesButton {
+.RepositoryLink {
+    max-width: 200px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: black;
+    font-weight: bold;
+    transition: all .2s ease;
+}
 
+.RepositoryLink:hover {
+    color: rgba(0, 131, 161, 1);
+    transition: all .2s ease;
+}
+
+.StargazersCount {
+    margin-bottom: 5px;
+}
+
+.ForksCount {
+    margin-bottom: 20px;
+}
+
+.DetailsButton, .FavouritesButton {
+    margin-bottom: 10px;
+    width: 180px;
+    height: 30px;
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    transition: all .2s ease;
+}
+
+.DetailsButton:hover, .FavouritesButton:hover {
+    box-shadow: 0 8px 16px 0 rgba(108, 228, 255, 1);
+    transition: all .2s ease;
+}
+
+.DetailsButton:active, .FavouritesButton:active {
+    box-shadow: 0 16px 32px 0 rgba(63, 178, 203, 1);
+    transition: all .1s ease;
+}
+
+.NavLink {
+    cursor: default;
 }

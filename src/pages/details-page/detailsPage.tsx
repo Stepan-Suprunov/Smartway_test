@@ -1,7 +1,9 @@
-import {DetailedRepository} from "../components/detailed-repository";
+import {DetailedRepository} from "../../components/detailed-repository";
 import React, {useEffect} from "react";
-import {detailRepositoryStore} from "../stores";
+import {detailRepositoryStore} from "../../stores";
 import {observer} from "mobx-react";
+import loader from '../../assets/img/loader.gif'
+import styles from './style.module.css'
 
 function DetailsPageComponent () {
 
@@ -12,7 +14,7 @@ function DetailsPageComponent () {
 
     if (detailRepositoryStore.isLoading) {
         return (
-            <span>Loading</span>
+                <img className={styles.Loader} src={loader} alt='Loading'/>
         );
     };
 

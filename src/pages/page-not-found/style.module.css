@@ -1,0 +1,11 @@
+.PageNotFound {
+    display: flex;
+    flex-direction: row;
+    margin: 50px auto;
+    max-width: 1000px;
+}
+
+.Img {
+    width: 100%;
+    border-radius: 50px;
+}
