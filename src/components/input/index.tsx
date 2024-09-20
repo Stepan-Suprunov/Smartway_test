@@ -1,32 +1,37 @@
 import styles from "./style.module.css";
-import React, {ChangeEvent} from "react";
-import {requestStore} from "../../stores/request-store";
+import React, {ChangeEvent, useCallback} from "react";
+import {requestStore} from "../../stores/index";
 import {observer} from "mobx-react";
+import {Button} from "../button";
 
 type InputPropsType = {
     placeholder: string
 };
 
 function InputComponent (props: InputPropsType) {
+    const {placeholder} = props;
 
-    const [title, setTitle] = React.useState("");
+    const onChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        requestStore.setRequest(e.currentTarget.value);
+    }, []);
 
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.currentTarget.value);
-    };
-    const onKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") {
-            requestStore.setRequest(title);
-            setTitle('')
-        }
-    };
+    // const onKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    //     if (e.key === "Enter") {
+    //         requestStore.setRequest(title);
+    //         setTitle('')
+    //     }
+    // };
 
     return (
+        <div>
         <input className={styles.RepositoryInput}
-               placeholder={props.placeholder}
+               placeholder={placeholder}
                onChange={onChangeHandler}
-               value={title}
-               onKeyPress={onKeyPressHandler}/>
+               value={requestStore.request}
+               // onKeyPress={onKeyPressHandler}
+        />
+        <Button title={'Копировать'} text={requestStore.request}/>
+        </div>
     );
 };
 

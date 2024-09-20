@@ -1,42 +1,39 @@
 import styles from "./style.module.css";
-import React from "react";
-import {favouritesStore} from "../../stores/favourites-store";
+import React, {useCallback} from "react";
+import {favouritesStore, detailRepositoryStore} from "../../stores/index";
 import {observer} from "mobx-react";
 import {NavLink} from "react-router-dom";
-import {detailRepositoryStore} from "../../stores/detailed-repository-store";
+import {RepositoryInterface} from "../../types";
 
 type RepositoryPropsType = {
-    repository: any
+    repository: RepositoryInterface
 }
 
-export function RepositoryComponent (props: RepositoryPropsType) {
+function RepositoryComponent (props: RepositoryPropsType) {
+    const {repository} = props;
 
-    const onFavouriteButtonClickHandler = () => {
-        if (!favouritesStore.includesFavourite(props.repository)) {
-            favouritesStore.addFavourite(props.repository);
-        } else {
-            favouritesStore.removeFavourite(props.repository);
-        };
-    };
+    const onFavouriteButtonClickHandler = useCallback(() => {
+        favouritesStore.addFavourite(repository);
+    }, []);
 
-    const onDetailsButtonClickHandler = () => {
-        detailRepositoryStore.setRepository(props.repository);
-    };
+    const onDetailsButtonClickHandler = useCallback(() => {
+        detailRepositoryStore.setUrl(repository.url);
+    }, []);
 
     return (
         <div className={styles.Repository}>
             <a className={styles.RepositoryLink}
-               href={props.repository.html_url}>
-                {props.repository.full_name}
+               href={repository.html_url}>
+                {repository.full_name}
             </a>
-            <span className={styles.StargazersCount}>Число старов: {props.repository.stargazers_count}</span>
-            <span className={styles.ForksCount}>Число форков: {props.repository.forks}</span>
+            <span className={styles.StargazersCount}>Число старов: {repository.stargazers_count}</span>
+            <span className={styles.ForksCount}>Число форков: {repository.forks}</span>
             <img className={styles.RepositoryLogo}
-                 src={props.repository.owner.avatar_url}/>
+                 src={repository.owner.avatar_url}/>
             <NavLink onClick={onDetailsButtonClickHandler} to="/detailes/"><button>Подробнее</button></NavLink>
             <button className={styles.FavouritesButton}
                     onClick={onFavouriteButtonClickHandler}>
-                {favouritesStore.includesFavourite(props.repository)? 'Удалить из избранного' : 'Добавить в избранное'}
+                {favouritesStore.includesFavourite(repository.id)? 'Удалить из избранного' : 'Добавить в избранное'}
             </button>
         </div>
     );

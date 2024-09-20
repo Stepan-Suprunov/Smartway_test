@@ -1,15 +1,25 @@
 import {makeAutoObservable} from "mobx";
+import {detailsPageRequest} from "../requests";
+import {RepositoryInterface} from "../types";
 
 class DetailedRepositoryStore {
-    repository: any = {};
+    url: string = '';
+    repository: RepositoryInterface = null;
 
     constructor() {
         makeAutoObservable(this);
     };
 
-    setRepository = (repository: any) => {
+    setUrl(url: string) {
+        this.url = url;
+    };
+
+    setRepository(repository: RepositoryInterface) {
         this.repository = repository;
-        console.log(this.repository)
+    }
+
+    getRequest = async () => {
+        this.setRepository(await(detailsPageRequest(this.url)))
     };
 };
 

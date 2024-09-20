@@ -1,18 +1,12 @@
-import {TopLayerLayout} from "../components/layouts/top-layer-layout";
-import {Input} from "../components/input";
-import {Button} from "../components/button";
-import {BodyLayout} from "../components/layouts/body-layout";
-import {RepositoriesList} from "../components/repositories-list";
-import {FavouritesList} from "../components/favourites-list";
-import {MainLayout} from "../components/layouts/main-layout";
 import React from "react";
+import {MainLayout, BodyLayout, TopLayerLayout} from "../components/layouts/index";
+import {Input, RepositoriesList, FavouritesList} from '../components/index'
 
 export function MainPage() {
     return (
         <MainLayout>
             <TopLayerLayout>
-                <Input placeholder={'Введите название репозитория'}/>
-                <Button title={'Копировать'}/>
+                <Input placeholder='Введите название репозитория'/>
             </TopLayerLayout>
             <BodyLayout>
                 <RepositoriesList/>

@@ -1,24 +1,25 @@
 import {makeAutoObservable} from "mobx";
+import {RepositoryInterface} from "../types";
 
 class FavouritesStore {
-    favourites:any = [];
+    favourites: Array<RepositoryInterface> = [];
 
     constructor() {
         makeAutoObservable(this);
     };
 
-    addFavourite = (repository:any) => {
-        if (!this.favourites.includes(repository)) {
+    addFavourite = (repository: RepositoryInterface) => {
+        if (!this.includesFavourite(repository.id)) {
             this.favourites.push(repository);
-        };
+        } else this.removeFavourite(repository);
     };
 
-    removeFavourite = (repository:any) => {
-        this.favourites = this.favourites.filter((rep:any) => rep !== repository);
+    removeFavourite = (repository: RepositoryInterface) => {
+        this.favourites = this.favourites.filter((rep: RepositoryInterface) => rep !== repository);
     };
 
-    includesFavourite = (repository:any) => {
-        if (this.favourites.includes(repository)) {
+    includesFavourite = (id: number) => {
+        if (this.favourites.find((rep: RepositoryInterface) => rep.id === id)) {
             return true
         } else return false;
     };

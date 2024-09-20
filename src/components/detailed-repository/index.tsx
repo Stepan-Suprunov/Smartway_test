@@ -1,26 +1,32 @@
 import {NavLink} from "react-router-dom";
 import styles from './style.module.css'
-import {detailRepositoryStore} from "../../stores/detailed-repository-store";
 import React from "react";
+import {RepositoryInterface} from "../../types";
 
-export function DetailedRepository() {
+type DetailedRepositoryPropsType = {
+    repository: RepositoryInterface
+};
+
+export function DetailedRepository(props: DetailedRepositoryPropsType) {
+    const {repository} = props;
+
     return (
         <div className={styles.DetailedRepository}>
             <NavLink to='/'>
                 <button>Вернуться к списку</button>
             </NavLink>
             <img className={styles.RepositoryLogo}
-                 src={detailRepositoryStore.repository.owner.avatar_url}/>
+                 src={repository.owner.avatar_url}/>
             <a className={styles.RepositoryLink}
-               href={detailRepositoryStore.repository.html_url}>
-                {detailRepositoryStore.repository.full_name}
+               href={repository.html_url}>
+                {repository.full_name}
             </a>
-            <span className={styles.StringInfo}>Число старов: {detailRepositoryStore.repository.stargazers_count}</span>
-            <span className={styles.StringInfo}>Число форков: {detailRepositoryStore.repository.forks}</span>
-            <span className={styles.StringInfo}>Создан: {detailRepositoryStore.repository.created_at}</span>
-            <span className={styles.StringInfo}>Описание: {detailRepositoryStore.repository.description}</span>
-            <span className={styles.StringInfo}>Язык: {detailRepositoryStore.repository.language}</span>
-            <span className={styles.StringInfo}>Принадлежит: {detailRepositoryStore.repository.owner.login}</span>
+            <span className={styles.StringInfo}>Число старов: {repository.stargazers_count}</span>
+            <span className={styles.StringInfo}>Число форков: {repository.forks}</span>
+            <span className={styles.StringInfo}>Создан: {repository.created_at}</span>
+            <span className={styles.StringInfo}>Описание: {repository.description}</span>
+            <span className={styles.StringInfo}>Язык: {repository.language}</span>
+            <span className={styles.StringInfo}>Принадлежит: {repository.owner.login}</span>
         </div>
     );
 };
