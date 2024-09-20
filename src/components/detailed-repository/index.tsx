@@ -1,10 +1,10 @@
 import {NavLink} from "react-router-dom";
 import styles from './style.module.css'
 import React from "react";
-import {RepositoryInterface} from "../../types";
+import {IRepository} from "../../types";
 
 type DetailedRepositoryPropsType = {
-    repository: RepositoryInterface
+    repository: IRepository
 };
 
 export function DetailedRepository(props: DetailedRepositoryPropsType) {

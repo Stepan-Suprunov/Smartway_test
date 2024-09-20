@@ -1,10 +1,11 @@
 import {makeAutoObservable} from "mobx";
 import {detailsPageRequest} from "../requests";
-import {RepositoryInterface} from "../types";
+import {IRepository} from "../types";
 
 class DetailedRepositoryStore {
     url: string = '';
-    repository: RepositoryInterface = null;
+    repository: IRepository | null = null;
+    isLoading: boolean = false;
 
     constructor() {
         makeAutoObservable(this);
@@ -13,13 +14,21 @@ class DetailedRepositoryStore {
     setUrl(url: string) {
         this.url = url;
     };
+    setIsLoading(isLoading: boolean) {
+        this.isLoading = isLoading;
+    };
 
-    setRepository(repository: RepositoryInterface) {
+    setRepository(repository: IRepository) {
         this.repository = repository;
     }
 
     getRequest = async () => {
-        this.setRepository(await(detailsPageRequest(this.url)))
+        this.setIsLoading(true);
+        const data = await detailsPageRequest(this.url)
+        this.setIsLoading(false);
+        if (data) {
+            this.setRepository(data);
+        };
     };
 };
 

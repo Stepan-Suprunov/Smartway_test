@@ -3,10 +3,10 @@ import React, {useCallback} from "react";
 import {favouritesStore, detailRepositoryStore} from "../../stores/index";
 import {observer} from "mobx-react";
 import {NavLink} from "react-router-dom";
-import {RepositoryInterface} from "../../types";
+import {IRepository} from "../../types";
 
 type RepositoryPropsType = {
-    repository: RepositoryInterface
+    repository: IRepository
 }
 
 function RepositoryComponent (props: RepositoryPropsType) {

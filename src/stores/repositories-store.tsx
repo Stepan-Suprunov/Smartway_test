@@ -1,23 +1,32 @@
 import {makeAutoObservable} from "mobx";
 import {repositoriesRequest} from "../requests";
-import {requestStore} from "./request-store";
-import {RepositoriesInterface} from "../types";
+import {IRepositories} from "../types";
 
 class RepositoriesStore {
-    repositories: RepositoriesInterface = {
+    repositories: IRepositories = {
         total_count: 0, incomplete_results: false, items: []
     };
+    isLoading: boolean = false;
 
     constructor() {
         makeAutoObservable(this);
     };
 
-    setRepositories = (repositories: RepositoriesInterface) => {
+    setRepositories = (repositories: IRepositories) => {
         this.repositories = repositories;
     };
 
-    getRequest = async () => {
-        this.setRepositories(await(repositoriesRequest(requestStore.request)))
+    setIsLoading(isLoading: boolean) {
+        this.isLoading = isLoading;
+    };
+
+    getRequest = async (request: string) => {
+        this.setIsLoading(true);
+        const data = await repositoriesRequest(request);
+        this.setIsLoading(false);
+        if (data) {
+            this.setRepositories(data);
+        };
     };
 };
 

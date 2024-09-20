@@ -1,16 +1,16 @@
-export interface RepositoriesInterface {
+export interface IRepositories {
     total_count: number
     incomplete_results: boolean
-    items: Array<RepositoryInterface>
+    items: Array<IRepository>
 };
 
-export interface RepositoryInterface {
+export interface IRepository {
     id: number
     node_id: string
     name: string
     full_name: string
     private: boolean
-    owner: OwnerInterface
+    owner: IOwner
     html_url: string
     description: string
     fork: boolean
@@ -74,7 +74,7 @@ export interface RepositoryInterface {
     archived: boolean
     disabled: boolean
     open_issues_count: number
-    license: LicenseInterface
+    license: ILicense
     allow_forking: boolean
     is_template: boolean
     web_commit_signoff_required: boolean
@@ -84,13 +84,13 @@ export interface RepositoryInterface {
     open_issues: number
     watchers: number
     default_branch: string
-    temp_clone_token?: any
+    temp_clone_token?: string | null
     network_count?: number
     subscribers_count?: number
     score?: number
 };
 
-interface OwnerInterface {
+interface IOwner {
     login: string
     id: number
     node_id: string
@@ -111,7 +111,7 @@ interface OwnerInterface {
     site_admin: boolean
 };
 
-interface LicenseInterface {
+interface ILicense {
     key: string
     name: string
     spdx_id: string

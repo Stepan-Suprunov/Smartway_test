@@ -7,7 +7,7 @@ type ButtonPropsType = {
     text: string
 };
 
-export function Button (props: ButtonPropsType) {
+export function ClipboardCopyButton (props: ButtonPropsType) {
     const {title, text} = props;
 
     const [buttonTitle, setButtonTitle] = React.useState(title);

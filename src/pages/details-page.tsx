@@ -8,7 +8,13 @@ function DetailsPageComponent () {
 
     useEffect(() => {
         detailRepositoryStore.getRequest();
-    }, [detailRepositoryStore.url]);
+    }, []);
+
+    if (detailRepositoryStore.isLoading) {
+        return (
+            <span>Loading</span>
+        );
+    };
 
     if (detailRepositoryStore.repository) {
         return (

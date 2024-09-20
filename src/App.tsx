@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
-import {MainPage, DetailsPage} from "./pages/index";
+import {MainPage, DetailsPage} from "./pages";
 
 function App() {
 
