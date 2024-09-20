@@ -4,12 +4,13 @@ import {Repository} from "../index";
 import {repositoriesStore} from "../../stores/index";
 import {observer} from "mobx-react";
 import {IRepository} from "../../types";
+import loader from '../../assets/img/loader.gif'
 
 function RepositoriesListComponent() {
 
     if (repositoriesStore.isLoading) {
         return (
-            <span>Loading</span>
+            <img className={styles.Loader} src={loader} alt='Loading'/>
         );
     };
 

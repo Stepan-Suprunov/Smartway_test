@@ -1,10 +1,11 @@
+import styles from './style.module.css'
 import React, {ChangeEvent, useCallback} from "react";
 import {repositoriesStore} from "../../stores";
 import {observer} from "mobx-react";
 import throttle from "lodash.throttle";
 import {Input, ClipboardCopyButton} from "../index";
 
-function SearchBlockComponent () {
+function SearchBlockComponent() {
 
     const [input, setInput] = React.useState("");
 
@@ -21,11 +22,11 @@ function SearchBlockComponent () {
     );
 
     return (
-        <div>
+        <div className={styles.SearchBlock}>
             <Input placeholder='Введите название репозитория'
                    onChangeHandler={onChangeHandler}
                    value={input}/>
-        <ClipboardCopyButton title={'Копировать'} text={input}/>
+            <ClipboardCopyButton title={'Копировать'} text={input}/>
         </div>
     );
 };

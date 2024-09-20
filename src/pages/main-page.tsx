@@ -1,13 +1,11 @@
 import React from "react";
-import {MainLayout, BodyLayout, TopLayerLayout} from "../components/layouts/index";
+import {MainLayout, BodyLayout} from "../components/layouts/index";
 import {SearchBlock, RepositoriesList, FavouritesList} from '../components/index'
 
 export function MainPage() {
     return (
         <MainLayout>
-            <TopLayerLayout>
-                <SearchBlock/>
-            </TopLayerLayout>
+            <SearchBlock/>
             <BodyLayout>
                 <RepositoriesList/>
                 <FavouritesList/>

@@ -1,4 +1,4 @@
-import styles from "../layouts/top-layer-layout/style.module.css";
+import styles from "./style.module.css";
 import React, {useCallback} from "react";
 import clipboardCopy from "clipboard-copy";
 

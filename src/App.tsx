@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
-import {MainPage, DetailsPage} from "./pages";
+import {MainPage, DetailsPage, PageNotFound} from "./pages/index";
 
 function App() {
 
@@ -8,7 +8,8 @@ function App() {
         <Routes>
             <Route path='/' element={<MainPage/>}/>
             <Route path="/detailes/" element={<DetailsPage/>} />
-        </Routes>
+            <Route path='*' element={<PageNotFound/>} />
+        </Routes >
     );
 }
 
